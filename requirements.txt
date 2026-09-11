@@ -1,5 +1,2 @@
-
 vk-api==11.9.9
-webdriver-manager==4.0.1
 requests==2.31.0
-
