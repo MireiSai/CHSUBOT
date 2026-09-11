@@ -23,10 +23,9 @@ from vk_api.keyboard import VkKeyboard, VkKeyboardColor
 from import_schedule_txt import load_lessons_from_txt
 
 # ================== НАСТРОЙКИ ==================
-TOKEN = os.getenv(
-    "VK_BOT_TOKEN",
-    "vk1.a.fsZfcaoBJzD7PqpqwraZdGrQlswDwqs1O-PomkRcRddIB8qxP_aJbNj8_wKTJg7S_iqUyjcWJP2t2W5Q-LVU-Qe6rNxYxhPoX9r3fwgsj2-1v_6knSurAevlHKvUbio2lqPV2oIdXvkrb_SSw902hPyuxn21eQoB8k2HdqhArDWpqJRePu8JpETFyqDW1du5VGQoDYubVOFSFNQJluPdvg",
-)
+TOKEN = os.getenv("VK_BOT_TOKEN")
+if not TOKEN:
+    raise RuntimeError("Не задана переменная VK_BOT_TOKEN")
 GROUP_ID = int(os.getenv("VK_GROUP_ID", "237061650"))
 GROUP_NAME = os.getenv("CHSU_GROUP_NAME", "2ПДОб-13-1оп-24")
 CHSU_GROUP_URL = "https://www.chsu.ru/schedule/groups?search={group}"
