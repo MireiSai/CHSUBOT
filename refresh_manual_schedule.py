@@ -5,9 +5,17 @@ import time
 from pathlib import Path
 from urllib.parse import quote_plus
 
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# Этот файл только для локального обновления расписания с сайта.
+# На хостинге должен запускаться CHSUBOT.py, а не этот скрипт.
+try:
+    from bs4 import BeautifulSoup
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+except ImportError as exc:
+    raise SystemExit(
+        "refresh_manual_schedule.py нельзя запускать как бота. "
+        "На Amvera в scriptName укажи CHSUBOT.py."
+    ) from exc
 
 GROUP_NAME = "2ПДОб-13-1оп-24"
 CHSU_GROUP_URL = "https://www.chsu.ru/schedule/groups?search={group}"
