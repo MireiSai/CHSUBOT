@@ -498,10 +498,20 @@ def parse_range_input(raw_text):
 
 
 def main():
+    print(f"Bot started for group {GROUP_NAME}")
+    while True:
+        try:
+            run_bot()
+        except Exception as exc:
+            print(f"LongPoll crashed: {type(exc).__name__}: {exc}")
+            time.sleep(5)
+
+
+def run_bot():
     vk_session = vk_api.VkApi(token=TOKEN)
     vk = vk_session.get_api()
     longpoll = VkBotLongPoll(vk_session, GROUP_ID)
-    print(f"Bot started for group {GROUP_NAME}")
+    print("LongPoll connected")
 
     for event in longpoll.listen():
         if event.type != VkBotEventType.MESSAGE_NEW:
